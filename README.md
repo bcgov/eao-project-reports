@@ -1,4 +1,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](../LICENSE)
+[![Report API CI](https://github.com/bcgov/eao-project-reports/actions/workflows/reports-api-ci.yml/badge.svg)](https://github.com/bcgov/eao-project-reports/actions/workflows/reports-api-ci.yml)
+
 
 # REPORTS API
 
