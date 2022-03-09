@@ -13,13 +13,15 @@
 # limitations under the License.
 """Model to handle all operations related to Milestone Type."""
 
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, Integer, String
 
 from .code_table import CodeTable
 from .db import db
 
-class MilestoneType(db.Model,CodeTable):
+
+class MilestoneType(db.Model, CodeTable):
     """Model class for Milestone Type."""
+
     __tablename__ = 'milestone_types'
     id = Column(Integer, primary_key=True, autoincrement=True)  # TODO check how it can be inherited from parent
-    name = Column(String,nullable=False)
+    name = Column(String, nullable=False)

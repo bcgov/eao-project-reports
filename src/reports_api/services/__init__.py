@@ -14,7 +14,7 @@
 """Exposes all of the Services used in the API."""
 
 from .code import CodeService
-from .project import ProjectService
 from .milestone import MilestoneService
-from .staff import StaffService
 from .outcome import OutcomeService
+from .project import ProjectService
+from .staff import StaffService

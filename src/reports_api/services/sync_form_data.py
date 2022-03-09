@@ -14,11 +14,12 @@
 """Service to manage work form sync with database."""
 
 from flask import current_app
+from inflector import English, Inflector
+
 from reports_api.utils.helpers import find_model_from_table_name
-from inflector import Inflector, English
 
 
-class SyncFormDataService:
+class SyncFormDataService:  # pylint:disable=too-few-public-methods
     """Service to sync form data with models."""
 
     @classmethod
@@ -57,6 +58,7 @@ class SyncFormDataService:
 
     @classmethod
     def sync_data(cls, payload: dict):
+        """Synchronize data from payload with database."""
         result = {}
         inflector = Inflector(English)
 

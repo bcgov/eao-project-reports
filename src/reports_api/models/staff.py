@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Staff."""
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from .code_table import CodeTable
@@ -47,8 +47,10 @@ class Staff(db.Model, CodeTable):
 
     @classmethod
     def find_active_staff_by_position(cls, position_id: int):
+        """Return active staff by position id."""
         return cls.query.filter_by(position_id=position_id, is_active=True)
 
     @classmethod
     def find_all_active_staff(cls):
+        """Return all active staff."""
         return cls.query.filter_by(is_active=True)

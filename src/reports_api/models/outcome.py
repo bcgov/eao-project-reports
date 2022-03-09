@@ -13,14 +13,15 @@
 # limitations under the License.
 """Model to handle all operations related to Outcome."""
 
-from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from .base_model import BaseModel
-from .db import db
 
 
 class Outcome(BaseModel):
     """Model class for Outcome."""
+
     __tablename__ = 'outcomes'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -37,7 +38,7 @@ class Outcome(BaseModel):
         outcomes = cls.query.filter_by(milestone_id=_milestone_id).all()
         return outcomes
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Returns JSON representation"""
         return {
             'id': self.id,

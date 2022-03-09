@@ -42,10 +42,10 @@ class StaffService:
         return response
 
     @classmethod
-    def find_by_id(cls, id):
+    def find_by_id(cls, _id):
         """Find staff by id."""
         response = {'staff': None}
-        staff = Staff.find_by_id(id)
+        staff = Staff.find_by_id(_id)
         if staff:
             response['staff'] = staff.as_dict()
         return response

@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Payment Disbursement status code."""
 
-from sqlalchemy import Column, ForeignKey, Integer, Boolean, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from .code_table import CodeTable

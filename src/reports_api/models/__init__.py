@@ -16,8 +16,8 @@
 from sqlalchemy import event  # noqa: I001
 from sqlalchemy.engine import Engine  # noqa: I001, I003, I004
 
-from .db import db  # noqa: I001
 from .code_table import CodeTable
+from .db import db  # noqa: I001
 from .ea_act import EAAct
 from .eao_team import EAOTeam
 from .event import Event
@@ -26,8 +26,8 @@ from .indigenous_category import IndigenousCategory
 from .indigenous_nation import IndigenousNation
 from .indigenous_work import IndigenousWork
 from .issue import Issue
-from .milestone_type import MilestoneType
 from .milestone import Milestone
+from .milestone_type import MilestoneType
 from .ministry import Ministry
 from .outcome import Outcome
 from .phase_code import PhaseCode
@@ -37,10 +37,10 @@ from .proponent import Proponent
 from .region import Region
 from .role import Role
 from .sector import Sector
-from .sub_sector import SubSector
-from .staff_work_role import StaffWorkRole
 from .staff import Staff
+from .staff_work_role import StaffWorkRole
+from .sub_sector import SubSector
+from .work import Work
 from .work_phase import WorkPhase
 from .work_status import WorkStatus
 from .work_type import WorkType
-from .work import Work

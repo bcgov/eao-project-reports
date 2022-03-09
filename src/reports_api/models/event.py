@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Event."""
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, DateTime
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
@@ -44,7 +44,7 @@ class Event(BaseModel):
     milestone = relationship('Milestone', foreign_keys=[milestone_id], lazy='select')
     outcome = relationship('Outcome', foreign_keys=[outcome_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Return Json representation."""
         return {
             'id': self.id,
@@ -65,4 +65,5 @@ class Event(BaseModel):
 
     @classmethod
     def find_by_work_id(cls, work_id: int):
+        """Return by work id."""
         return cls.query.filter_by(work_id=work_id)

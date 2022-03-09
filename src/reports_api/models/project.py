@@ -11,11 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from sqlalchemy import Column, ForeignKey, Integer, Boolean, String, Float, Text
+"""Model to manage Project."""
+
+from sqlalchemy import Boolean, Column, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
-from .db import db
 
 
 class Project(BaseModel):
@@ -41,7 +42,7 @@ class Project(BaseModel):
     region_env = relationship('Region', foreign_keys=[region_id_env], lazy='select')
     region_flnro = relationship('Region', foreign_keys=[region_id_flnro], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Return Json representation."""
         result = {
             'id': self.id,

@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Issues."""
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, DateTime
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
@@ -39,7 +39,7 @@ class Issue(BaseModel):
     work_id = Column(ForeignKey('works.id'), nullable=False)
     work = relationship('Work', foreign_keys=[work_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Return Json representation."""
         return {
             'id': self.id,
@@ -51,11 +51,13 @@ class Issue(BaseModel):
             'is_sensitive': self.is_sensitive,
             'is_resolved': self.is_resolved,
             'start_date': str(self.start_date) if self.start_date else None,
-            'anticipated_resolution_date': str(self.anticipated_resolution_date) if self.anticipated_resolution_date else None,
+            'anticipated_resolution_date': str(
+                self.anticipated_resolution_date) if self.anticipated_resolution_date else None,
             'resolution_date': str(self.resolution_date) if self.resolution_date else None,
             'work_id': self.work_id,
         }
 
     @classmethod
     def find_by_work_id(cls, work_id: int):
+        """Find by work id."""
         return cls.query.filter_by(work_id=work_id)

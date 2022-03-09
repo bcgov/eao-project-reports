@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Indigenous Work."""
 
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
@@ -33,7 +33,7 @@ class IndigenousWork(BaseModel):
     indigenous_nation = relationship('IndigenousNation', foreign_keys=[indigenous_nation_id], lazy='select')
     indigenous_category = relationship('IndigenousCategory', foreign_keys=[indigenous_category_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Return Json representation."""
         return {
             'id': self.id,
@@ -44,4 +44,5 @@ class IndigenousWork(BaseModel):
 
     @classmethod
     def find_by_work_id(cls, work_id: int):
+        """Return by work id."""
         return cls.query.filter_by(work_id=work_id)

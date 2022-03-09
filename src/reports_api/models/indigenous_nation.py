@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Indigenous Group."""
 
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Boolean, Column, Integer, String
 
 from .code_table import CodeTable
 from .db import db
@@ -38,4 +38,5 @@ class IndigenousNation(db.Model, CodeTable):
 
     @classmethod
     def find_all_active_groups(cls):
+        """Find all active groups."""
         return cls.query.filter_by(is_active=True).all()

@@ -16,3 +16,4 @@ Werkzeug
 cryptography
 sqlalchemy_utils
 sqlalchemy<1.4
+Inflector

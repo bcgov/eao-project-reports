@@ -21,18 +21,20 @@ All services have 2 defaults sets of endpoints:
 That are used to expose operational health information about the service, and meta information.
 """
 from importlib.resources import path
+
 from flask import Blueprint
 
-from .code import API as CODES_API
-from .ops import API as OPS_API
 from .apihelper import Api
+from .code import API as CODES_API
 from .meta import API as META_API
-from .project import API as PROJECTS_API
-from .sync_form_data import API as SYNC_FORM_DATA_API
-from .phase import API as PHASE_API
 from .milestone import API as MILESTONE_API
-from .staff import API as STAFF_API
+from .ops import API as OPS_API
 from .outcome import API as OUTCOME_API
+from .phase import API as PHASE_API
+from .project import API as PROJECTS_API
+from .staff import API as STAFF_API
+from .sync_form_data import API as SYNC_FORM_DATA_API
+
 
 __all__ = ('API_BLUEPRINT', 'OPS_BLUEPRINT')
 

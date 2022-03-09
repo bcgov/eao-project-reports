@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Indigenous Category."""
 
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Boolean, Column, Integer, String
 
 from .code_table import CodeTable
 from .db import db
@@ -40,4 +40,5 @@ class IndigenousCategory(db.Model, CodeTable):
 
     @classmethod
     def find_all_active_categories(cls):
+        """Find all active categories."""
         return cls.query.filter_by(is_active=True).all()

@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to WorkStatus."""
 
-from sqlalchemy import Column, DateTime, Integer, String, Text, Boolean, ForeignKey, func
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, func
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
@@ -31,7 +31,8 @@ class WorkStatus(BaseModel):
     work_id = Column(ForeignKey('works.id'), nullable=False)
     work = relationship('Work', foreign_keys=[work_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
+        """Return dict representation."""
         return {
             'id': self.id,
             'status': self.status,
@@ -42,4 +43,5 @@ class WorkStatus(BaseModel):
 
     @classmethod
     def find_by_work_id(cls, work_id: int):
+        """Return by work id."""
         return cls.query.filter_by(work_id=work_id)

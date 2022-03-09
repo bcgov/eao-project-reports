@@ -13,17 +13,18 @@
 # limitations under the License.
 """Service to manage Phase."""
 from flask import current_app, jsonify
+
 from reports_api.models.phase_code import PhaseCode
-from reports_api.models.milestone import Milestone
 
 
-class PhaseService():
+class PhaseService():  # pylint:disable=too-few-public-methods
     """Service to manage phases related operations"""
+
     @classmethod
     def find_phase_codes_by_ea_act_and_work_type(
-        cls,
-        _ea_act_id: str,
-        _work_type_id: str
+            cls,
+            _ea_act_id: str,
+            _work_type_id: str
     ):
         """Find phase codes by ea_act and work_type"""
         current_app.logger.debug(f'<find_phase_codes_by_ea_act_and_work_type : {_ea_act_id} - {_work_type_id}')

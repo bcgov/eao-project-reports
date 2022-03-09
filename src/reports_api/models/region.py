@@ -28,6 +28,7 @@ class Region(db.Model, CodeTable):
     entity = Column(String())
 
     def as_dict(self):
+        """Return Json representation."""
         result = CodeTable.as_dict(self)
         result['entity'] = self.entity
         return result

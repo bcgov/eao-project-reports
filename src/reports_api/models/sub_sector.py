@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to SubSector."""
 
-from sqlalchemy import Column, ForeignKey, Integer, Boolean, String
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from .code_table import CodeTable
@@ -30,7 +30,7 @@ class SubSector(db.Model, CodeTable):
     sector_id = Column(ForeignKey('sectors.id'), nullable=False)
     sector = relationship('Sector', foreign_keys=[sector_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
         """Return Json representation."""
         result = CodeTable.as_dict(self)
         result['short_name'] = self.short_name

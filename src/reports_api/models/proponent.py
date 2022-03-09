@@ -13,8 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Proponent."""
 
-from xmlrpc.client import Boolean
-from sqlalchemy import Column, Integer, BOOLEAN
+from sqlalchemy import BOOLEAN, Column, Integer
 
 from .code_table import CodeTable
 from .db import db
@@ -29,6 +28,7 @@ class Proponent(db.Model, CodeTable):
     is_active = Column(BOOLEAN(), default=False)
 
     def as_dict(self):
+        """Return JSON Representation."""
         result = CodeTable.as_dict(self)
         result['is_active'] = self.is_active
         return result

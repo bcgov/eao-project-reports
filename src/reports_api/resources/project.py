@@ -13,7 +13,6 @@
 # limitations under the License.
 """Resource for project endpoints."""
 from http import HTTPStatus
-from flask import current_app
 
 from flask_restx import Namespace, Resource, cors
 

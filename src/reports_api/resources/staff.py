@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Resource for staff endpoints."""
-from email.policy import HTTP
 from http import HTTPStatus
+
 from flask import request
 from flask_restx import Namespace, Resource, cors
 
@@ -36,23 +36,25 @@ class Staffs(Resource):
         position_id = request.args.get('position', None)
         if position_id:
             return StaffService.find_by_position_id(position_id), HTTPStatus.OK
-        else:
-            return StaffService.find_all_active_staff(), HTTPStatus.OK
+
+        return StaffService.find_all_active_staff(), HTTPStatus.OK
 
 
-@API.route('/<int:id>', methods=['GET', 'OPTIONS'])
+@API.route('/<int:_id>', methods=['GET', 'OPTIONS'])
 class Staff(Resource):
     """Endpoint resource to return staff details."""
+
     @staticmethod
     @cors.crossdomain(origin='*')
-    def get(id):
+    def get(_id):
         """Return a staff detail based on id."""
-        return StaffService.find_by_id(id), HTTPStatus.OK
+        return StaffService.find_by_id(_id), HTTPStatus.OK
 
 
 @API.route('/positions/<int:position_id>', methods=['GET', 'OPTIONS'])
-class Staff(Resource):
+class StaffPosition(Resource):
     """Endpoint resource to return staffs based on position_id."""
+
     @staticmethod
     @cors.crossdomain(origin='*')
     def get(position_id):

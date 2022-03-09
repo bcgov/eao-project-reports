@@ -13,11 +13,10 @@
 # limitations under the License.
 """Service to manage Fee Calculation."""
 
-from flask import current_app, jsonify
+from flask import current_app
 
-from reports_api.models import db, CodeTable
+from reports_api.models import CodeTable
 from reports_api.utils.helpers import find_model_from_table_name
-from reports_api.models.phase_code import PhaseCode
 
 
 class CodeService:

@@ -13,13 +13,12 @@
 # limitations under the License.
 """Resource for syncing work form data with reports DB."""
 from http import HTTPStatus
-from flask import current_app
 
 from flask_restx import Namespace, Resource, cors
 
-from reports_api.services import ProjectService
 from reports_api.services.sync_form_data import SyncFormDataService
 from reports_api.utils.util import cors_preflight
+
 
 API = Namespace('sync-form-data', description='Sync Form Data')
 

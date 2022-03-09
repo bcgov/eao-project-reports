@@ -11,20 +11,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# TODO:
+"""Test suite for health endpoints."""
 
 from http import HTTPStatus
-from urllib.parse import urljoin
 
 
 def test_get_healthz(client):
+    """Test get health endpoint."""
     url = '/ops/healthz'
     result = client.get(url)
     assert result.status_code == HTTPStatus.OK
 
 
 def test_get_readyz(client):
+    """Test readiness endpoint."""
     url = '/ops/readyz'
     result = client.get(url)
     assert result.status_code == HTTPStatus.OK

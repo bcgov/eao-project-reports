@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Federal Involvement."""
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer
 
 from .code_table import CodeTable
 from .db import db
@@ -25,4 +25,3 @@ class FederalInvolvement(db.Model, CodeTable):
     __tablename__ = 'federal_involvements'
 
     id = Column(Integer, primary_key=True, autoincrement=True)  # TODO check how it can be inherited from parent
-

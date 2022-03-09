@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Base class for code model."""
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declared_attr
-from .db import db
 
 
 class CodeTable():  # pylint: disable=too-few-public-methods
@@ -24,12 +23,12 @@ class CodeTable():  # pylint: disable=too-few-public-methods
     name = Column(String(250))
 
     @declared_attr
-    def id(cls):  # pylint:disable=no-self-argument, # noqa: N805
+    def id(cls):  # pylint:disable=no-self-argument,function-redefined # noqa: N805
         """Return code."""
         return Column(Integer)
 
     @declared_attr
-    def name(cls):  # pylint:disable=no-self-argument, # noqa: N805
+    def name(cls):  # pylint:disable=no-self-argument,function-redefined # noqa: N805
         """Return code name."""
         return Column(String)
 

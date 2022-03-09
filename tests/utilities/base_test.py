@@ -17,48 +17,8 @@
 Test-Suite to ensure that the /reports endpoint is working as expected.
 """
 
-from datetime import datetime
-from faker import Faker
-from random import randrange
-from typing import Dict, List, Tuple
-
 token_header = {
     'alg': 'RS256',
     'typ': 'JWT',
     'kid': 'sbc-auth-web'
 }
-
-fake = Faker()
-
-
-def get_claims(app_request=None, role: str = Role.EDITOR.value, username: str = 'CP0001234', login_source: str = None,
-               roles: list = [], product_code: str = 'BUSINESS'):
-    """Return the claim with the role param."""
-    claim = {
-        'jti': 'a50fafa4-c4d6-4a9b-9e51-1e5e0d102878',
-        'exp': 31531718745,
-        'iat': 1531718745,
-        'iss': 'http://localhost:8081/auth/realms/demo',
-        'aud': 'sbc-auth-web',
-        'sub': '15099883-3c3f-4b4c-a124-a1824d6cba84',
-        'typ': 'Bearer',
-        'realm_access':
-            {
-                'roles':
-                    [
-                        '{}'.format(role),
-                        *roles
-                    ]
-            },
-        'preferred_username': username,
-        'name': username,
-        'username': username,
-        'loginSource': login_source,
-        'roles':
-            [
-                '{}'.format(role),
-                *roles
-            ],
-        'product_code': product_code
-    }
-    return claim

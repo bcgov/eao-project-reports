@@ -13,11 +13,13 @@
 # limitations under the License.
 """Service to manage Outcome."""
 from flask import current_app, jsonify
+
 from reports_api.models import Outcome
 
 
-class OutcomeService():
+class OutcomeService():  # pylint:disable=too-few-public-methods
     """Service to manage outcome related operations"""
+
     @classmethod
     def find_by_milestone_id(cls, milestone_id: int):
         """Find outcomes by milestone_id"""

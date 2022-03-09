@@ -13,11 +13,13 @@
 # limitations under the License.
 """Service to manage Milestone."""
 from flask import current_app, jsonify
+
 from reports_api.models import Milestone
 
 
-class MilestoneService():
+class MilestoneService():  # pylint:disable=too-few-public-methods
     """Service to manage milestones related operations"""
+
     @classmethod
     def find_non_decision_by_phase_id(cls, phase_id: int):
         """Find milestones by phase_id which are neither start event not end event"""

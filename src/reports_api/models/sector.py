@@ -28,6 +28,7 @@ class Sector(db.Model, CodeTable):
     short_name = Column(String())
 
     def as_dict(self):
+        """Return JSON Representation."""
         result = CodeTable.as_dict(self)
         result['short_name'] = self.short_name
         return result

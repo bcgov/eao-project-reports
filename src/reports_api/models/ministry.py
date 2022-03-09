@@ -28,7 +28,8 @@ class Ministry(db.Model, CodeTable):
     abbreviation = Column(String())
 
     def as_dict(self):
+        """Return JSON representation."""
         result = CodeTable.as_dict(self)
         result['abbreviation'] = self.abbreviation
-        result['combined'] = "-".join([self.name,self.abbreviation])
+        result['combined'] = "-".join([self.name, self.abbreviation])
         return result

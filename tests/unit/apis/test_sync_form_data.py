@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+"""Test suite for sync form data."""
 
 from http import HTTPStatus
 
@@ -20,6 +20,7 @@ API_URL = '/api/v1/sync-form-data'
 
 
 def test_sync_form_data_create(client, new_project, new_staff):
+    """Test sync form data."""
     payload = {
         "works": {
             "title": "Test works",
@@ -42,7 +43,7 @@ def test_sync_form_data_create(client, new_project, new_staff):
 
 
 def test_sync_form_data_update(client, new_project, new_staff):
-
+    """Test sync form data update."""
     new_payload = {
         "works": {
             "title": "Test works",

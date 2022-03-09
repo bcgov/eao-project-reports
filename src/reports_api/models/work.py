@@ -14,13 +14,16 @@
 """Model to handle all operations related to Work."""
 
 import enum
-from sqlalchemy import Column, DateTime, Integer, String, Text, Boolean, ForeignKey, Enum
+
+from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel
 
 
 class WorkStatusStoplightEnum(enum.Enum):
+    """Work Status Stoplight Enum."""
+
     RED = 'R'
     YELLOW = 'Y'
     GREEN = 'G'
@@ -65,7 +68,8 @@ class Work(BaseModel):
     work_lead = relationship('Staff', foreign_keys=[work_lead_id], lazy='select')
     work_type = relationship('WorkType', foreign_keys=[work_type_id], lazy='select')
 
-    def as_dict(self):
+    def as_dict(self):  # pylint:disable=arguments-differ
+        """Return JSON Representation."""
         result = super().as_dict()
         result['work_status_stoplight'] = self.work_status_stoplight.value if self.work_status_stoplight else None
         return result
