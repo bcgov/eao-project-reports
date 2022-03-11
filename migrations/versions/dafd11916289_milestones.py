@@ -129,7 +129,7 @@ def upgrade():
 		"milestone_type_id" : 13,
 		"sort_order" : 5,
 		"is_start_event": False,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Withdrawn",
@@ -137,7 +137,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 6,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
@@ -153,7 +153,7 @@ def upgrade():
 		"milestone_type_id" : 12,
 		"sort_order" : 8,
 		"is_start_event": True,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Termination (s.39)",
@@ -161,7 +161,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 9,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
@@ -241,7 +241,7 @@ def upgrade():
 		"milestone_type_id" : 7,
 		"sort_order" : 19,
 		"is_start_event": False,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Withdrawn",
@@ -249,7 +249,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 20,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
@@ -265,7 +265,7 @@ def upgrade():
 		"milestone_type_id" : 12,
 		"sort_order" : 22,
 		"is_start_event": True,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Termination (s.39)",
@@ -273,7 +273,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 23,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Process Order Amended (s.19)",
@@ -329,7 +329,7 @@ def upgrade():
 		"milestone_type_id" : 7,
 		"sort_order" : 30,
 		"is_start_event": False,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Withdrawn",
@@ -337,7 +337,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 31,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
@@ -353,7 +353,7 @@ def upgrade():
 		"milestone_type_id" : 12,
 		"sort_order" : 33,
 		"is_start_event": True,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Termination (s.39)",
@@ -361,7 +361,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 34,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Process Order Amended (s.19)",
@@ -393,7 +393,7 @@ def upgrade():
 		"milestone_type_id" : 7,
 		"sort_order" : 38,
 		"is_start_event": False,
-		"is_end_event": False
+		"is_end_event": True
 	},
 	{
 		"name" : "Project Withdrawn",
@@ -401,7 +401,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 39,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
@@ -457,7 +457,7 @@ def upgrade():
 		"milestone_type_id" : 1,
 		"sort_order" : 46,
 		"is_start_event": False,
-		"is_end_event": True
+		"is_end_event": False
 	},
 	{
 		"name" : "Other",
