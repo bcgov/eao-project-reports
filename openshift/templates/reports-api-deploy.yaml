@@ -49,16 +49,16 @@ objects:
             - name: DATABASE_PORT
               value: '5432'
             containerName: "${NAME}-${TAG_NAME}"
-    triggers:
-    - type: ImageChange
-      imageChangeParams:
-        automatic: true
-        containerNames:
-        - "${NAME}-${TAG_NAME}"
-        from:
-          kind: ImageStreamTag
-          namespace: "${IMAGE_NAMESPACE}"
-          name: "${NAME}:${TAG_NAME}"
+#    triggers:
+#    - type: ImageChange
+#      imageChangeParams:
+#        automatic: true
+#        containerNames:
+#        - "${NAME}-${TAG_NAME}"
+#        from:
+#          kind: ImageStreamTag
+#          namespace: "${IMAGE_NAMESPACE}"
+#          name: "${NAME}:${TAG_NAME}"
     - type: ConfigChange
     test: false
     selector:
@@ -233,12 +233,14 @@ parameters:
   required: true
   description: The namespace of the OpenShift project containing the imagestream for
     the application.
-  value: eao-tools
+#  value: eao-tools
+  value: bcgov
 - name: IMAGE_REGISTRY
   displayName: Image Registry
   required: true
   description: Image registry URL.
-  value: docker-registry.default.svc:5000
+#  value: docker-registry.default.svc:5000
+  value: ghcr.io
 - name: TAG_NAME
   displayName: Environment TAG name
   description: The TAG name for this environment, e.g., dev, test, prod
