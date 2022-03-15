@@ -39,4 +39,5 @@ class SubSector(db.Model, CodeTable):
 
     @classmethod
     def find_by_sector_id(cls, sector_id):
+        """Find all sub sectors by sector_id"""
         return cls.query.filter_by(sector_id=sector_id).all()
