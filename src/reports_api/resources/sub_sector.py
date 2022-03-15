@@ -13,9 +13,8 @@
 # limitations under the License.
 """Resource for Sub Sector endpoints."""
 from http import HTTPStatus
-
+from flask import jsonify, request
 from flask_restx import Namespace, Resource, cors
-from flask import request, jsonify
 
 from reports_api.services import SubSectorService
 from reports_api.utils.util import cors_preflight
