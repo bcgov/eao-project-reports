@@ -34,6 +34,7 @@ from .phase import API as PHASE_API
 from .project import API as PROJECTS_API
 from .staff import API as STAFF_API
 from .sync_form_data import API as SYNC_FORM_DATA_API
+from .sub_sector import API as SUB_SECTOR_API
 
 
 __all__ = ('API_BLUEPRINT', 'OPS_BLUEPRINT')
@@ -73,3 +74,4 @@ API.add_namespace(PHASE_API, path='/phases')
 API.add_namespace(MILESTONE_API, path='/milestones')
 API.add_namespace(STAFF_API, path='/staffs')
 API.add_namespace(OUTCOME_API, path='/outcomes')
+API.add_namespace(SUB_SECTOR_API, path='/sub-sectors')
