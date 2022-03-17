@@ -74,5 +74,6 @@ class BaseModel(db.Model):
         if recursive:
             for rel in mapper.relationships:
                 relationship = rel.key
-                result[relationship] = getattr(self, relationship).as_dict()
+                relational_data = getattr(self, relationship, None)
+                result[relationship] = relational_data.as_dict() if relational_data else None
         return result

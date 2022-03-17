@@ -62,7 +62,7 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
         result = {}
         inflector = Inflector(English)
 
-        for model_key, dataset in payload.items():
+        for model_key, dataset in payload.items():  # pylint:disable=too-many-nested-blocks
             if model_key not in result:
                 foreign_keys = {}
                 model_name = model_key
@@ -70,7 +70,11 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
                     *relations_list, model_name = model_key.split('-')
                     for relation in relations_list:
                         if relation not in result:
-                            result[relation] = cls._process_model_data(relation, payload[relation])
+                            payload_relation_key = next((x for x in payload.keys() if x == relation), None)
+                            if payload_relation_key is None:
+                                payload_relation_key = next(
+                                    (x for x in payload.keys() if x.endswith(f'-{relation}')), None)
+                            result[relation] = cls._process_model_data(relation, payload[payload_relation_key])
                         relation_key = inflector.singularize(relation)
                         foreign_keys[f'{relation_key}_id'] = result[relation]['id']
             if isinstance(dataset, dict):
