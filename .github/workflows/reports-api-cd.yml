@@ -19,6 +19,7 @@ env:
 
 jobs:
   build-and-push-image-to-ghcr:
+    if: github.event_name == 'push' && github.repository == 'bcgov/eao-project-reports'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -78,6 +79,7 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
   deploy-to-dev:
+    if: github.event_name == 'push' && github.repository == 'bcgov/eao-project-reports'
     needs: [ build-and-push-image-to-ghcr ]
     runs-on: ubuntu-latest
     environment:
