@@ -62,7 +62,7 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
         result = {}
         inflector = Inflector(English)
 
-        for model_key, dataset in payload.items():
+        for model_key, dataset in payload.items():  # pylint:disable=too-many-nested-blocks
             if model_key not in result:
                 foreign_keys = {}
                 model_name = model_key
