@@ -95,4 +95,4 @@ jobs:
       - name: Watch new rollout (trigger by image change in Openshift)
         shell: bash
         run: |
-          oc rollout status dc/${{ env.APP_NAME }}-dev -n ${{ secrets.OPENSHIFT4_DEV_REPO }} -w
+          oc rollout latest dc/${{ env.APP_NAME }}-dev -n ${{ secrets.OPENSHIFT4_DEV_REPO }}
