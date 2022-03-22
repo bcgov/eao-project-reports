@@ -34,6 +34,7 @@ class PhaseCode(db.Model, CodeTable):
     duration = Column(Integer())
     legislated = Column(Boolean())
     sort_order = Column(Integer())
+    color = Column(String(15))
 
     work_type = relationship('WorkType', foreign_keys=[work_type_id], lazy='select')
     ea_act = relationship('EAAct', foreign_keys=[ea_act_id], lazy='select')
@@ -54,7 +55,8 @@ class PhaseCode(db.Model, CodeTable):
             'legislated': self.legislated,
             'work_type': self.work_type.as_dict(),
             'ea_act': self.ea_act.as_dict(),
-            'milestones': [milestone.as_dict() for milestone in self.milestones]
+            'milestones': [milestone.as_dict() for milestone in self.milestones],
+            'color': self.color
         }
 
     @classmethod
