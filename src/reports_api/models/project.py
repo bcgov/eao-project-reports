@@ -42,26 +42,3 @@ class Project(BaseModel):
     proponent = relationship('Proponent', foreign_keys=[proponent_id], lazy='select')
     region_env = relationship('Region', foreign_keys=[region_id_env], lazy='select')
     region_flnro = relationship('Region', foreign_keys=[region_id_flnro], lazy='select')
-
-    def as_dict(self):  # pylint:disable=arguments-differ
-        """Return Json representation."""
-        result = {
-            'id': self.id,
-            'name': self.name,
-            'description': self.description,
-            'location': self.location,
-            'capital_investment': self.capital_investment,
-            'epic_guid': self.epic_guid,
-            'is_project_closed': self.is_project_closed,
-            'address': self.address,
-            'sub_sector_id': self.sub_sector_id,
-            'proponent_id': self.proponent_id,
-            'region_id_env': self.region_id_env,
-            'region_id_flnro': self.region_id_flnro,
-
-            'sub_sector': self.sub_sector.as_dict(),
-            'proponent': self.proponent.as_dict(),
-            'region_env': self.region_env.as_dict(),
-            'region_flnro': self.region_flnro.as_dict()
-        }
-        return result
