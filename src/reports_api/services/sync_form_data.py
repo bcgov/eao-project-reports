@@ -22,6 +22,7 @@ from reports_api.utils.helpers import find_model_from_table_name
 
 class SyncFormDataService:  # pylint:disable=too-few-public-methods
     """Service to sync form data with models."""
+
     inflector = Inflector(English)
 
     @classmethod
