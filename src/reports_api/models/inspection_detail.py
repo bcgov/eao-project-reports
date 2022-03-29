@@ -13,7 +13,7 @@
 # limitations under the License.
 """Model to handle all operations related to Inspection Details."""
 
-from sqlalchemy import DateTime, Column, ForeignKey, Integer, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from .base_model import BaseModel

@@ -13,15 +13,16 @@
 # limitations under the License.
 """Service to manage work form sync with database."""
 
+from typing import Union
 from flask import current_app
 from inflector import English, Inflector
-from typing import Union
 
 from reports_api.utils.helpers import find_model_from_table_name
 
 
 class SyncFormDataService:  # pylint:disable=too-few-public-methods
     """Service to sync form data with models."""
+    inflector = Inflector(English)
 
     @classmethod
     def _update_or_create(cls, model_class, data: dict):
@@ -58,16 +59,15 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
         return model_name, relations_list, result
 
     @classmethod
-    def _process_model_instance_data(cls, model_class, data: dict, result: dict):
+    def _process_model_instance_data(cls, model_class, data: dict, result: dict):  # pylint:disable=too-many-locals
         """Process data for a single instance of a model"""
-        inflector = Inflector(English)
-        dependants = [{k: v} for k, v in data.items() if isinstance(v, dict) or isinstance(v, list)]
-        obj = cls._update_or_create(model_class, data)
+        dependants = [{k: v} for k, v in data.items() if isinstance(v, (dict, list))]
+        instance = cls._update_or_create(model_class, data)
         current_app.logger.info(f'Model class ---> {model_class}')
-        instance = obj.as_dict()
+        instance = instance.as_dict()
         if instance:
             for dependant in dependants:
-                current_app.logger.info(f'Processing dependants')
+                current_app.logger.info('Processing dependants')
                 foreign_keys = {}
                 key, value = next(iter(dependant.items()))
                 if not hasattr(model_class, key):
@@ -75,15 +75,15 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
                     model_name, relations, result = cls._get_model_name_and_relations(model_key, data, result)
                     if find_model_from_table_name(model_name) is not None:
                         for relation in relations:
-                            relation_key = inflector.singularize(relation)
+                            relation_key = cls.inflector.singularize(relation)
                             foreign_keys[f'{relation_key}_id'] = result[relation]['id']
-                        instance_name = inflector.singularize(model_class.__tablename__)
+                        instance_name = cls.inflector.singularize(model_class.__tablename__)
                         foreign_keys[f'{instance_name}_id'] = instance['id']
                         current_app.logger.info(f'foreign_keys {foreign_keys}')
                         if isinstance(value, dict):
                             dependant.update(foreign_keys)
                         elif isinstance(value, list):
-                            dependant = [{**x, **foreign_keys} for x in value]
+                            dependant = [{**v, **foreign_keys} for v in value]
                     instance[key] = cls._process_model_data(model_name, dependant, result)
         return instance
 
@@ -107,14 +107,13 @@ class SyncFormDataService:  # pylint:disable=too-few-public-methods
     def sync_data(cls, payload: dict):
         """Synchronize data from payload with database."""
         result = {}
-        inflector = Inflector(English)
 
         for model_key, dataset in payload.items():  # pylint:disable=too-many-nested-blocks
             if model_key not in result:
                 foreign_keys = {}
                 model_name, relations, result = cls._get_model_name_and_relations(model_key, payload, result)
                 for relation in relations:
-                    relation_key = inflector.singularize(relation)
+                    relation_key = cls.inflector.singularize(relation)
                     foreign_keys[f'{relation_key}_id'] = result[relation]['id']
             if isinstance(dataset, dict):
                 dataset.update(foreign_keys)
