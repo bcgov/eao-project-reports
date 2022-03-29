@@ -51,6 +51,7 @@ jobs:
     env:
       FLASK_ENV: "testing"
       DATABASE_TEST_URL: "postgresql://postgres:postgres@localhost:54333/postgres"
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     runs-on: ubuntu-20.04
 
