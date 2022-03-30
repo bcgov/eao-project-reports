@@ -16,7 +16,7 @@
 from sqlalchemy import event  # noqa: I001
 from sqlalchemy.engine import Engine  # noqa: I001, I003, I004
 
-from .attendee import Attendee
+from .inspection_attendee import InspectionAttendee
 from .code_table import CodeTable
 from .db import db  # noqa: I001
 from .ea_act import EAAct

@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Model to handle all operations related to Attendee."""
+"""Model to handle all operations related to InspectionAttendee."""
 
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
@@ -21,10 +21,10 @@ from sqlalchemy.ext.mutable import MutableList
 from .base_model import BaseModel
 
 
-class Attendee(BaseModel):
-    """Model class for Attendee."""
+class InspectionAttendee(BaseModel):
+    """Model class for InspectionAttendee."""
 
-    __tablename__ = 'attendees'
+    __tablename__ = 'inspection_attendees'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
