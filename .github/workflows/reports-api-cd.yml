@@ -18,7 +18,19 @@ env:
   APP_NAME: eao-project-reports-api
 
 jobs:
+  sonar-scan:
+    if: github.event_name == 'push' && github.repository == 'bcgov/eao-project-reports'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build-and-push-image-to-ghcr:
+    needs: sonar-scan
     if: github.event_name == 'push' && github.repository == 'bcgov/eao-project-reports'
     runs-on: ubuntu-latest
     strategy:
