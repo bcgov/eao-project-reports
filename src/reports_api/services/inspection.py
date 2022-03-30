@@ -23,6 +23,6 @@ class InspectionService():  # pylint:disable=too-few-public-methods
     @classmethod
     def get_count(cls):
         """Find number of inspections"""
-        current_app.logger.debug(f'Find number of inspections')
+        current_app.logger.debug('Find number of inspections')
         count = Inspection.find_count()
         return jsonify({"count": count})
