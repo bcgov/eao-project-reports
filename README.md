@@ -43,3 +43,4 @@ flask db upgrade
 1. Tests are run from the Status bar at the bottom of the workbench in VS Code or `pytest` command.
 2. Next run `make coverage` to generate the coverage report, which appears in the *htmlcov* directory.
 
+
