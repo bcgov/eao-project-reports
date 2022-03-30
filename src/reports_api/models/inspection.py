@@ -28,7 +28,7 @@ class Inspection(BaseModel):
     project_status = Column(String(255), nullable=False)
     inspection_status = Column(String(255), nullable=False)
     ea_certificate = Column(String(255), nullable=False)
-    inspection_no = Column(String(255), nullable=False)
+    inspection_no = Column(String(255), nullable=False, unique=True)
     utm = Column(String(255), nullable=True, default=None)
     trigger = Column(String(255), nullable=False)
     inspection_type = Column(String(255), nullable=False)
@@ -59,3 +59,8 @@ class Inspection(BaseModel):
         """Returns collection of inspections by project_id"""
         inspections = cls.query.filter_by(project_id=_project_id).all()
         return inspections
+
+    @classmethod
+    def find_count(cls):
+        """Returns the total number of inspections"""
+        return cls.query.count()
